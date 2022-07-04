@@ -15,7 +15,16 @@ function App() {
     quantity: 1,
   });
 
-  const addItem = (ticketType, setTicketType) => {
+  const [total, setTotal] = useState(0.0);
+
+  const childPrice = 5;
+  const adultPrice = 10;
+  const concessionPrice = 7;
+  const childDeluxePrice = 10;
+  const adultDeluxePrice = 15;
+  const concessionDeluxePrice = 12;
+
+  const addItem = (ticketType, setTicketType, price) => {
     if (
       //if in the cart
       shoppingCart.some((shoppingCart) => shoppingCart.id === ticketType.id)
@@ -38,9 +47,10 @@ function App() {
       console.log("added to cart:" + JSON.stringify(ticketType));
     }
     setCartCount(cartCount + 1);
+    setTotal(total + price);
   };
 
-  const takeItem = (ticketType, setTicketType) => {
+  const takeItem = (ticketType, setTicketType, price) => {
     if (
       //if in the cart
       shoppingCart.some((shoppingCart) => shoppingCart.id === ticketType.id)
@@ -55,6 +65,7 @@ function App() {
           quantity: ticketType.quantity - 1,
         }));
         setCartCount(cartCount - 1);
+        setTotal(total - price);
       }
       console.log("1 taken from cart:" + JSON.stringify(ticketType));
     } else {
@@ -62,7 +73,7 @@ function App() {
     console.log(shoppingCart);
   };
 
-  const removeItem = (ticketType, setTicketType) => {
+  const removeItem = (ticketType, setTicketType, price) => {
     if (
       //if in the cart
       shoppingCart.some((shoppingCart) => shoppingCart.id === ticketType.id)
@@ -74,6 +85,7 @@ function App() {
       console.log("removed from cart:" + JSON.stringify(ticketType));
 
       setCartCount(cartCount - ticketType.quantity + 1);
+      setTotal(total - price * (ticketType.quantity - 1));
 
       setTicketType((ticketType) => ({
         ...ticketType,
@@ -84,64 +96,64 @@ function App() {
   };
 
   const addChildTicket = () => {
-    addItem(child, setChild);
+    addItem(child, setChild, childPrice);
   };
   const takeChildTicket = () => {
-    takeItem(child, setChild);
+    takeItem(child, setChild, childPrice);
   };
   const removeChildTicket = () => {
-    removeItem(child, setChild);
+    removeItem(child, setChild, childPrice);
   };
 
   const addAdultTicket = () => {
-    addItem(adult, setAdult);
+    addItem(adult, setAdult, adultPrice);
   };
   const takeAdultTicket = () => {
-    takeItem(adult, setAdult);
+    takeItem(adult, setAdult, adultPrice);
   };
   const removeAdultTicket = () => {
-    removeItem(adult, setAdult);
+    removeItem(adult, setAdult, adultPrice);
   };
 
   const addConcessionTicket = () => {
-    addItem(concession, setConcession);
+    addItem(concession, setConcession, concessionPrice);
   };
   const takeConcessionTicket = () => {
-    takeItem(concession, setConcession);
+    takeItem(concession, setConcession, concessionPrice);
   };
   const removeConcessionTicket = () => {
-    removeItem(concession, setConcession);
+    removeItem(concession, setConcession, concessionPrice);
   };
 
   //Deluxe tickets
   const addChildDeluxeTicket = () => {
-    addItem(childDeluxe, setChildDeluxe);
+    addItem(childDeluxe, setChildDeluxe, childDeluxePrice);
   };
   const takeChildDeluxeTicket = () => {
-    takeItem(childDeluxe, setChildDeluxe);
+    takeItem(childDeluxe, setChildDeluxe, childDeluxePrice);
   };
   const removeChildDeluxeTicket = () => {
-    removeItem(childDeluxe, setChildDeluxe);
+    removeItem(childDeluxe, setChildDeluxe, childDeluxePrice);
   };
 
   const addAdultDeluxeTicket = () => {
-    addItem(adultDeluxe, setAdultDeluxe);
+    addItem(adultDeluxe, setAdultDeluxe, adultDeluxePrice);
   };
   const takeAdultDeluxeTicket = () => {
-    takeItem(adultDeluxe, setAdultDeluxe);
+    takeItem(adultDeluxe, setAdultDeluxe, adultDeluxePrice);
   };
   const removeAdultDeluxeTicket = () => {
-    removeItem(adultDeluxe, setAdultDeluxe);
+    removeItem(adultDeluxe, setAdultDeluxe, adultDeluxePrice);
   };
 
   const addConcessionDeluxeTicket = () => {
-    addItem(concessionDeluxe, setConcessionDeluxe);
+    addItem(concessionDeluxe, setConcessionDeluxe, concessionDeluxePrice);
   };
   const takeConcessionDeluxeTicket = () => {
-    takeItem(concessionDeluxe, setConcessionDeluxe);
+    takeItem(concessionDeluxe, setConcessionDeluxe, concessionDeluxePrice);
   };
   const removeConcessionDeluxeTicket = () => {
-    removeItem(concessionDeluxe, setConcessionDeluxe);
+    removeItem(concessionDeluxe, setConcessionDeluxe, concessionDeluxePrice);
   };
 
   const checkout = () => {
@@ -169,7 +181,7 @@ function App() {
   return (
     <div className="App">
       <div>
-        Child Ticket
+        Child Ticket, price: £{childPrice}
         <button id="minus" onClick={(e) => takeChildTicket(e)}>
           -
         </button>
@@ -182,7 +194,7 @@ function App() {
         </button>
       </div>
       <div>
-        Adult Ticket
+        Adult Ticket, price: £{adultPrice}
         <button id="minus" onClick={(e) => takeAdultTicket(e)}>
           -
         </button>
@@ -195,7 +207,7 @@ function App() {
         </button>
       </div>
       <div>
-        Concession Ticket
+        Concession Ticket, price: £{concessionPrice}
         <button id="minus" onClick={(e) => takeConcessionTicket(e)}>
           -
         </button>
@@ -209,7 +221,7 @@ function App() {
       </div>
 
       <div>
-        Child Ticket Deluxe
+        Child Ticket Deluxe, price: £{childDeluxePrice}
         <button id="minus" onClick={(e) => takeChildDeluxeTicket(e)}>
           -
         </button>
@@ -222,7 +234,7 @@ function App() {
         </button>
       </div>
       <div>
-        Adult Deluxe Ticket
+        Adult Deluxe Ticket, price: £{adultDeluxePrice}
         <button id="minus" onClick={(e) => takeAdultDeluxeTicket(e)}>
           -
         </button>
@@ -235,7 +247,7 @@ function App() {
         </button>
       </div>
       <div>
-        Concession Deluxe Ticket
+        Concession Deluxe Ticket, price: £{concessionDeluxePrice}
         <button id="minus" onClick={(e) => takeConcessionDeluxeTicket(e)}>
           -
         </button>
@@ -248,7 +260,8 @@ function App() {
         </button>
       </div>
 
-      <p>Cart: {cartCount}</p>
+      <p>Cart: {cartCount} items</p>
+      <p>Total cost: £{total}</p>
       <button id="checkout" onClick={(e) => checkout(e)}>
         checkout
       </button>
