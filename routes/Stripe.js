@@ -8,13 +8,13 @@ const tickets = new Map([
 
   [2, { type: "Adult Ticket", price: 1000 }],
 
-  [3, { type: "Senior Ticket", price: 700 }],
+  [3, { type: "Concession Ticket", price: 700 }],
 
   [4, { type: "Child Deluxe Ticket", price: 1000 }],
 
   [5, { type: "Adult Deluxe Ticket", price: 1500 }],
 
-  [6, { type: "Senior Deluxe Ticket", price: 1200 }],
+  [6, { type: "Concession Deluxe Ticket", price: 1200 }],
 ]);
 
 router.post("/create-checkout-session/", async (req, res) => {
