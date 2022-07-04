@@ -7,12 +7,14 @@ app.use(cors());
 const messagesRoutes = require("./routes/Messages");
 const topicsRoutes = require("./routes/Topics");
 const usersRoutes = require("./routes/Users");
+const checkoutRoutes = require("./routes/Stripe");
 
 app.use("/comment", messagesRoutes);
 app.use("/topic", topicsRoutes);
 app.use("/user", usersRoutes);
+app.use("/checkout", checkoutRoutes);
 
-const server = app.listen(3000, () => {
+const server = app.listen(3001, () => {
   console.log(
     `Response server started successfully on port number ${
       server.address().port
