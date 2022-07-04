@@ -1,7 +1,7 @@
-require("dotenv").config();
-
 const router = require("express").Router();
-const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY);
+const stripe = require("stripe")(
+  "sk_test_51LFyEtHbyPyH98V45nGqkTIcOIAclZZnPHqSNDJSO89K3mCZb8M8Z9cLSUorpWNuhfThI6rhkChiosgfjxvkN0SD00syHezdsi"
+);
 
 const tickets = new Map([
   [1, { type: "Child Ticket", price: 500 }],
@@ -35,8 +35,8 @@ router.post("/create-checkout-session/", async (req, res) => {
           quantity: item.quantity,
         };
       }),
-      success_url: `${process.env.CLIENT_URL}/success.html`,
-      cancel_url: `${process.env.CLIENT_URL}/cancel.html`,
+      success_url: `http://localhost:3000/success.html`,
+      cancel_url: `http://localhost:3000/cancel.html`,
     });
     res.json({ url: session.url });
   } catch (e) {
