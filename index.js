@@ -7,6 +7,7 @@ app.use(cors());
 const messagesRoutes = require("./routes/Messages");
 const topicsRoutes = require("./routes/Topics");
 const checkoutRoutes = require("./routes/Stripe");
+const saveCustomer = require("./routes/checkout");
 
 const mongoose = require("mongoose");
 mongoose.connect(
@@ -26,6 +27,7 @@ mongoose.connect(
 app.use("/comment", messagesRoutes);
 app.use("/topic", topicsRoutes);
 app.use("/checkout", checkoutRoutes);
+app.use("/saveCustomer", saveCustomer);
 
 
 
