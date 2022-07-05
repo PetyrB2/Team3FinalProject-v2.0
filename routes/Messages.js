@@ -1,20 +1,5 @@
 const router = require("express").Router();
-
-const mongoose = require("mongoose");
-mongoose.connect(
-  "mongodb://localhost:27017/DiscussionBoard",
-  {
-    useNewUrlParser: true,
-  },
-  function (err) {
-    if (err) {
-      console.log("error db not connected");
-    } else {
-      console.log("messages db connected");
-    }
-  }
-);
-
+const mongoose =require("mongoose");
 const Schema = mongoose.Schema;
 const commentSchema = new Schema(
   {
@@ -179,3 +164,4 @@ router.patch("/reply/delete/:id", async (req, res) => {
 });
 
 module.exports = router;
+module.exports = Comment;

@@ -2,19 +2,6 @@ const router = require("express").Router();
 
 //create (if !exists) and connect to db
 const mongoose = require("mongoose");
-mongoose.connect(
-  "mongodb://localhost:27017/DiscussionBoard",
-  {
-    useNewUrlParser: true,
-  },
-  function (err) {
-    if (err) {
-      console.log("error db not connected");
-    } else {
-      console.log("topics db connected");
-    }
-  }
-);
 
 //create schema for db
 
@@ -112,3 +99,4 @@ router.delete("/delete/:id", async (req, res) => {
 });
 
 module.exports = router;
+module.exports = Topic;
