@@ -121,8 +121,8 @@ router.put("/update/:id", async (req, res) => {
       {
         $set: {
           Message: req.body.Message,
-          Film_Name: req.body.Film_Name,
-          Film_Rating: req.body.Film_Rating,
+          filmName: req.body.filmName,
+          filmRating: req.body.filmRating,
         },
       }
     );
