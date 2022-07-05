@@ -1,46 +1,5 @@
 const router = require("express").Router();
-const mongoose =require("mongoose");
-const Schema = mongoose.Schema;
-const commentSchema = new Schema(
-  {
-    Username: {
-      type: String,
-      required: true,
-    },
-    Message: {
-      type: String,
-      required: true,
-    },
-    filmName: {
-      type: String,
-      required: false,
-    },
-    filmRating: {
-      type: Number,
-      required: false,
-      min: 1,
-      max: 10,
-    },
-    Replies: [
-      {
-        Username: {
-          type: String,
-          required: false,
-        },
-        Message: {
-          type: String,
-          required: false,
-        },
-      },
-    ],
-  },
-  {
-    timestamps: true,
-  }
-);
-
-//creating and using collection and schema above
-const Comment = mongoose.model("Comments", commentSchema);
+const Comment = require("../models/MessagesSchema");
 
 //create comment
 router.post("/create", (req, res) => {
@@ -103,7 +62,6 @@ router.get("/read/username/:username", async (req, res) => {
   }
 });
 
-
 router.get("/read/id/:id", async (req, res) => {
   try {
     const comment = await Comment.find({ _id: req.params.id });
@@ -145,7 +103,7 @@ router.delete("/delete/:id", async (req, res) => {
 // delete reply by id
 router.patch("/reply/delete/:id", async (req, res) => {
   try {
-   const replies =  Comment.find({ _id: req.params.id },{Replies:true})
+    const replies = Comment.find({ _id: req.params.id }, { Replies: true });
 
     const deletedReply = await Comment.updateOne(
       { _id: req.params.id },
@@ -164,4 +122,3 @@ router.patch("/reply/delete/:id", async (req, res) => {
 });
 
 module.exports = router;
-module.exports = Comment;

@@ -1,7 +1,8 @@
 {
   "scripts": {
     "start": "node index.js",
-    "test": "mocha --reporter=nyan --exit"
+    "test": "mocha --reporter=nyan --exit",
+    "coverage": "nyc npm test"
   },
   "dependencies": {
     "chai": "^4.3.6",
@@ -12,5 +13,8 @@
     "mongoose": "^6.4.2",
     "nodemon": "^2.0.18",
     "stripe": "^9.11.0"
+  },
+  "devDependencies": {
+    "nyc": "^15.1.0"
   }
 }
