@@ -33,6 +33,10 @@ const checkoutSchema = new Schema(
       type: String,
       required: true,
     },
+    message: {
+      type: String,
+      required: false,
+    },
     cart: [
       {
         id: {
