@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "node index.js",
-    "test": "mocha --reporter=nyan --exit",
+    "test": "mocha test --reporter=nyan --exit",
     "coverage": "nyc npm test"
   },
   "dependencies": {
