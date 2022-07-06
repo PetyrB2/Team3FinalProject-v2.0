@@ -41,7 +41,7 @@ const checkoutSchema = new Schema(
           type: Number,
           required: true,
         },
-        quatity: {
+        quantity: {
           type: Number,
           required: false,
         },
