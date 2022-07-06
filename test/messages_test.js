@@ -10,21 +10,21 @@ mocha.describe("CRUD testing for comments", () => {
   let id;
   mocha.beforeEach((done) => {
     Comment.deleteMany({})
-      .then((done) => {
+      .then(() => {
         Comment.create({
           Username: "Username",
           Message: "A message",
           filmName: "A film",
-          filmRating: 10,
+          filmRating: 2,
         })
           .then((result) => {
             id = result._id;
+            username = result.Username;
             done();
           })
           .catch((err) => console.error(err));
       })
       .catch((err) => console.error(err));
-    done();
   });
 
   mocha.it("should create a comment", (done) => {
@@ -32,20 +32,19 @@ mocha.describe("CRUD testing for comments", () => {
       Username: "Username 2",
       Message: "A message 2",
       filmName: "A film 2",
-      filmRating: 9,
+      filmRating: 8,
     };
     chai
       .request(server)
       .post("/comment/create")
       .send(requestBody)
       .end((err, res) => {
+        if (err) done(err);
         chai.expect(err).to.be.null;
         chai.expect(res.status).to.equal(201);
-        chai.expect(res.body).to.have.lengthOf(2);
         chai.expect(res.body).to.include(requestBody);
         done();
       });
-    done();
   });
 
   mocha.it("should find all the comments", (done) => {
@@ -53,39 +52,39 @@ mocha.describe("CRUD testing for comments", () => {
       .request(server)
       .get("/comment/read")
       .end((err, res) => {
-        chai.expect(err).to.be.null;
-        chai.expect(res.status).to.equal(200);
+        if (err) done(err);
+        chai.expect(res).to.have.status(200);
+        chai.expect(res.body).to.not.be.null;
         chai.expect(res.body).to.have.lengthOf(1);
         chai.expect(res.body[0]).to.include({
           _id: id.toString(),
           Username: "Username",
           Message: "A message",
           filmName: "A film",
-          filmRating: 10,
+          filmRating: 2,
         });
-        return done();
+        done();
       });
-    done();
   });
 
   mocha.it("should find comments by username", (done) => {
     chai
       .request(server)
-      .get("/comment/read/username/:Username")
+      .get(`/comment/read/username/${username}`)
       .end((err, res) => {
-        chai.expect(err).to.be.null;
-        chai.expect(res.status).to.equal(200);
+        if (err) done(err);
+        chai.expect(res).to.have.status(200);
+        chai.expect(res.body).to.not.be.null;
         chai.expect(res.body).to.have.lengthOf(1);
         chai.expect(res.body[0]).to.include({
           _id: id.toString(),
           Username: "Username",
           Message: "A message",
           filmName: "A film",
-          filmRating: 10,
+          filmRating: 2,
         });
-        return done();
+        done();
       });
-    done();
   });
 
   mocha.it("should find comments by ID", (done) => {
@@ -93,19 +92,20 @@ mocha.describe("CRUD testing for comments", () => {
       .request(server)
       .get(`/comment/read/id/${id}`)
       .end((err, res) => {
-        chai.expect(err).to.be.null;
-        chai.expect(res.status).to.equal(200);
+        if (err) done(err);
+        chai.expect(res).to.have.status(200);
+        chai.expect(res.body).to.not.be.null;
+
         chai.expect(res.body).to.have.lengthOf(1);
         chai.expect(res.body[0]).to.include({
           _id: id.toString(),
           Username: "Username",
           Message: "A message",
           filmName: "A film",
-          filmRating: 10,
+          filmRating: 2,
         });
-        return done();
+        done();
       });
-    done();
   });
 
   mocha.it("should update a comment", (done) => {
@@ -119,11 +119,11 @@ mocha.describe("CRUD testing for comments", () => {
       .put(`/comment/update/${id}`)
       .send(requestBody)
       .end((err, res) => {
-        chai.expect(err).to.be.null;
-        chai.expect(res.status).to.equal(201);
-        chai.expect(res.body).to.include(requestBody);
+        if (err) done(err);
+        chai.expect(res).to.have.status(200);
+        chai.expect(res.body).to.not.be.null;
+        done();
       });
-    return done();
   });
 
   mocha.it("should delete a comment by ID", (done) => {
@@ -131,10 +131,9 @@ mocha.describe("CRUD testing for comments", () => {
       .request(server)
       .delete(`/comment/delete/${id}`)
       .end((err, res) => {
-        chai.expect(err).to.be.null;
-        chai.expect(res.status).to.equal(204);
-        chai.expect(res.body).to.have.lengthOf(0);
+        if (err) done(err);
+        chai.expect(res).to.have.status(204);
       });
-    return done();
+    done();
   });
 });

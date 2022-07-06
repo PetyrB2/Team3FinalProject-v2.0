@@ -6,22 +6,22 @@ chai.use(chaiHttp);
 const Topic = require("../models/TopicsSchema");
 const server = require("../index");
 
-mocha.describe("CRUD testing for topics", () => {
+mocha.describe("CRUD testing", () => {
   let id;
   mocha.beforeEach((done) => {
     Topic.deleteMany({})
-      .then((done) => {
+      .then(() => {
         Topic.create({
           Topic: "A topic",
         })
           .then((result) => {
             id = result._id;
+            topicName = result.Topic;
             done();
           })
           .catch((err) => console.error(err));
       })
       .catch((err) => console.error(err));
-    done();
   });
 
   mocha.it("should create a topic", (done) => {
@@ -33,12 +33,12 @@ mocha.describe("CRUD testing for topics", () => {
       .post("/topic/create")
       .send(requestBody)
       .end((err, res) => {
+        if (err) done(err);
         chai.expect(err).to.be.null;
         chai.expect(res.status).to.equal(201);
         chai.expect(res.body).to.include(requestBody);
         done();
       });
-    done();
   });
 
   mocha.it("should find all the topics", (done) => {
@@ -46,33 +46,23 @@ mocha.describe("CRUD testing for topics", () => {
       .request(server)
       .get("/topic/read")
       .end((err, res) => {
-        chai.expect(err).to.be.null;
-        chai.expect(res.status).to.equal(200);
-        chai.expect(res.body).to.have.lengthOf(1);
-        chai.expect(res.body[0]).to.include({
-          _id: id.toString(),
-          Topic: "A topic",
-        });
-        return done();
+        if (err) done(err);
+        chai.expect(res).to.have.status(200);
+        chai.expect(res.body).to.not.be.null;
+        done();
       });
-    done();
   });
 
   mocha.it("should find topics by name", (done) => {
     chai
       .request(server)
-      .get("/topic/read/name/:name")
+      .get(`/topic/read/name/${topicName}`)
       .end((err, res) => {
-        chai.expect(err).to.be.null;
-        chai.expect(res.status).to.equal(200);
-        chai.expect(res.body).to.have.lengthOf(1);
-        chai.expect(res.body[0]).to.include({
-          _id: id.toString(),
-          Topic: "A topic",
-        });
-        return done();
+        if (err) done(err);
+        chai.expect(res).to.have.status(200);
+        chai.expect(res.body).to.not.be.null;
+        done();
       });
-    done();
   });
 
   mocha.it("should find topics by ID", (done) => {
@@ -80,16 +70,16 @@ mocha.describe("CRUD testing for topics", () => {
       .request(server)
       .get(`/topic/read/id/${id}`)
       .end((err, res) => {
-        chai.expect(err).to.be.null;
-        chai.expect(res.status).to.equal(200);
+        if (err) done(err);
+        chai.expect(res).to.have.status(200);
+        chai.expect(res.body).to.not.be.null;
         chai.expect(res.body).to.have.lengthOf(1);
         chai.expect(res.body[0]).to.include({
           _id: id.toString(),
           Topic: "A topic",
         });
-        return done();
+        done();
       });
-    done();
   });
 
   mocha.it("should update a topic", (done) => {
@@ -101,11 +91,11 @@ mocha.describe("CRUD testing for topics", () => {
       .put(`/topic/update/${id}`)
       .send(requestBody)
       .end((err, res) => {
-        chai.expect(err).to.be.null;
-        chai.expect(res.status).to.equal(201);
-        chai.expect(res.body).to.include(requestBody);
+        if (err) done(err);
+        chai.expect(res).to.have.status(200);
+        chai.expect(res.body).to.not.be.null;
+        done();
       });
-    return done();
   });
 
   mocha.it("should delete a topic by ID", (done) => {
@@ -113,10 +103,9 @@ mocha.describe("CRUD testing for topics", () => {
       .request(server)
       .delete(`/topic/delete/${id}`)
       .end((err, res) => {
-        chai.expect(err).to.be.null;
-        chai.expect(res.status).to.equal(204);
-        chai.expect(res.body).to.have.lengthOf(0);
+        if (err) done(err);
+        chai.expect(res).to.have.status(204);
+        done();
       });
-    return done();
   });
 });
