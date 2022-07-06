@@ -17,9 +17,9 @@ router.post("/create", (req, res) => {
 });
 
 //read all topics
-router.get("/read", (req, res) => {
+router.get("/read", async (req, res) => {
   try {
-    const topic = Topic.find();
+    const topic = await Topic.find();
     res.status(200).json(topic);
   } catch (err) {
     res.json({ message: err });
