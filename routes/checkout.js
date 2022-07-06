@@ -1,73 +1,18 @@
 const router = require("express").Router();
 
-const mongoose = require("mongoose");
-
-const Schema = mongoose.Schema;
-const checkoutSchema = new Schema(
-  {
-    firstName: {
-      type: String,
-      required: true,
-    },
-    lastName: {
-      type: String,
-      required: true,
-    },
-    phoneNumber: {
-      type: String,
-      required: false,
-    },
-    email: {
-      type: String,
-      required: true,
-    },
-    date: {
-      type: Date,
-      required: true,
-    },
-    time: {
-      type: String,
-      required: true,
-    },
-    film: {
-      type: String,
-      required: true,
-    },
-    message: {
-      type: String,
-      required: false,
-    },
-    cart: [
-      {
-        id: {
-          type: Number,
-          required: true,
-        },
-        quatity: {
-          type: Number,
-          required: false,
-        },
-      },
-    ],
-  },
-  {
-    timestamps: true,
-  }
-);
-
-//creating and using collection and schema above
-const Checkout = mongoose.model("Checkout", checkoutSchema);
+const Checkout = require("../models/CheckoutSchema");
 
 //create checkout
 router.post("/create", (req, res) => {
   const checkout = new Checkout({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
-    phonenumber: req.body.phoneNumber,
+    phoneNumber: req.body.phoneNumber,
     email: req.body.email,
     date: req.body.date,
     time: req.body.time,
     film: req.body.film,
+    message: req.body.message,
     cart: req.body.cart,
   });
   checkout
@@ -124,11 +69,12 @@ router.put("/update/:id", async (req, res) => {
         $set: {
           firstName: req.body.firstName,
           lastName: req.body.lastName,
-          phonenumber: req.body.phoneNumber,
+          phoneNumber: req.body.phoneNumber,
           email: req.body.email,
           date: req.body.date,
           time: req.body.time,
           film: req.body.film,
+          message: req.body.message,
           cart: req.body.cart,
         },
       }

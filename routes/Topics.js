@@ -1,26 +1,5 @@
 const router = require("express").Router();
-
-//create (if !exists) and connect to db
-const mongoose = require("mongoose");
-
-//create schema for db
-
-const Schema = mongoose.Schema;
-const topicSchema = new Schema(
-  {
-    Topic: {
-      type: String,
-      required: true,
-      maxLength: 100,
-    },
-  },
-  {
-    timestamps: true,
-  }
-);
-
-//creating and using collection and schema above
-const Topic = mongoose.model("Topics", topicSchema);
+const Topic = require("../models/TopicsSchema");
 
 //create topic
 router.post("/create", (req, res) => {
@@ -38,9 +17,9 @@ router.post("/create", (req, res) => {
 });
 
 //read all topics
-router.get("/read", async (req, res) => {
+router.get("/read", (req, res) => {
   try {
-    const topic = await Topic.find();
+    const topic = Topic.find();
     res.status(200).json(topic);
   } catch (err) {
     res.json({ message: err });
@@ -99,4 +78,3 @@ router.delete("/delete/:id", async (req, res) => {
 });
 
 module.exports = router;
-module.exports = Topic;
