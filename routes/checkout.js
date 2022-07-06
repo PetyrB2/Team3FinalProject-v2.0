@@ -7,11 +7,12 @@ router.post("/create", (req, res) => {
   const checkout = new Checkout({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
-    phonenumber: req.body.phoneNumber,
+    phoneNumber: req.body.phoneNumber,
     email: req.body.email,
     date: req.body.date,
     time: req.body.time,
     film: req.body.film,
+    message: req.body.message,
     cart: req.body.cart,
   });
   checkout
@@ -68,11 +69,12 @@ router.put("/update/:id", async (req, res) => {
         $set: {
           firstName: req.body.firstName,
           lastName: req.body.lastName,
-          phonenumber: req.body.phoneNumber,
+          phoneNumber: req.body.phoneNumber,
           email: req.body.email,
           date: req.body.date,
           time: req.body.time,
           film: req.body.film,
+          message: req.body.message,
           cart: req.body.cart,
         },
       }
@@ -93,5 +95,5 @@ router.delete("/delete/:id", async (req, res) => {
   }
 });
 
-// module.exports = router;
-module.exports = Checkout;
+module.exports = router;
+// module.exports = Checkout;
