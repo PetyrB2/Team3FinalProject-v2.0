@@ -1,13 +1,14 @@
 const router = require("express").Router();
 const Comment = require("../models/CommentSchema");
 
-//create comment
-router.post("/create", (req, res) => {
+//create comment using topic id
+router.post("/create/:id", (req, res) => {
   const comment = new Comment({
     Username: req.body.Username,
     Message: req.body.Message,
     filmName: req.body.filmName,
     filmRating: req.body.filmRating,
+    Topic: req.params.id,
   });
   comment
     .save()
@@ -23,6 +24,16 @@ router.post("/create", (req, res) => {
 router.get("/read", async (req, res) => {
   try {
     const comment = await Comment.find();
+    res.status(200).json(comment);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
+
+//get comments for a topic using topic id
+router.get("/read/id/:id", async (req, res) => {
+  try {
+    const comment = await Comment.find({ Topic: req.params.id });
     res.status(200).json(comment);
   } catch (err) {
     res.json({ message: err });
@@ -45,7 +56,8 @@ router.get("/read/username/:username", async (req, res) => {
   }
 });
 
-router.get("/read/id/:id", async (req, res) => {
+//read comment by id
+router.get("/readComment/:id", async (req, res) => {
   try {
     const comment = await Comment.find({ _id: req.params.id });
     res.status(200).json(comment);
