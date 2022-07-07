@@ -5,8 +5,25 @@ chai.use(chaiHttp);
 
 const Comment = require("../models/CommentSchema");
 const server = require("../index");
+const Topic = require("../models/TopicsSchema");
 
 mocha.describe("CRUD testing for comments", () => {
+  let t_id;
+  mocha.beforeEach((done) => {
+    Topic.deleteMany({})
+      .then(() => {
+        Topic.create({
+          Topic: "A topic",
+        })
+          .then((result) => {
+            t_id = result._id;
+            done();
+          })
+          .catch((err) => console.error(err));
+      })
+      .catch((err) => console.error(err));
+  });
+
   let id;
   mocha.beforeEach((done) => {
     Comment.deleteMany({})
@@ -16,6 +33,7 @@ mocha.describe("CRUD testing for comments", () => {
           Message: "A message",
           filmName: "A film",
           filmRating: 2,
+          Topic: t_id.toString(),
         })
           .then((result) => {
             id = result._id;
@@ -36,7 +54,7 @@ mocha.describe("CRUD testing for comments", () => {
     };
     chai
       .request(server)
-      .post("/comment/create")
+      .post(`/comment/create/${t_id}`)
       .send(requestBody)
       .end((err, res) => {
         if (err) done(err);
@@ -56,6 +74,25 @@ mocha.describe("CRUD testing for comments", () => {
         chai.expect(res).to.have.status(200);
         chai.expect(res.body).to.not.be.null;
         chai.expect(res.body).to.have.lengthOf(1);
+        chai.expect(res.body[0]).to.include({
+          _id: id.toString(),
+          Username: "Username",
+          Message: "A message",
+          filmName: "A film",
+          filmRating: 2,
+        });
+        done();
+      });
+  });
+
+  mocha.it("should find all the comments by topic id", (done) => {
+    chai
+      .request(server)
+      .get(`/comment/read/id/${t_id}`)
+      .end((err, res) => {
+        if (err) done(err);
+        chai.expect(res).to.have.status(200);
+        chai.expect(res.body).to.not.be.null;
         chai.expect(res.body[0]).to.include({
           _id: id.toString(),
           Username: "Username",
@@ -90,7 +127,7 @@ mocha.describe("CRUD testing for comments", () => {
   mocha.it("should find comments by ID", (done) => {
     chai
       .request(server)
-      .get(`/comment/read/id/${id}`)
+      .get(`/comment//readComment/${id}`)
       .end((err, res) => {
         if (err) done(err);
         chai.expect(res).to.have.status(200);

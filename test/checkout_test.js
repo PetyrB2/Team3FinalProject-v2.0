@@ -42,7 +42,10 @@ mocha.describe("CRUD testing for save customers", () => {
       time: "15:00",
       film: "A film",
       message: "A message",
-      // cart: [],
+      // cart: [
+      //   { id: 1, quantity: 2 },
+      //   { id: 2, quantity: 3 },
+      // ],
     };
     chai
       .request(server)
@@ -76,7 +79,10 @@ mocha.describe("CRUD testing for save customers", () => {
           time: "15:00",
           film: "A film",
           message: "A message",
-          // cart: [{ id: 1, quantity: 2 }, { id: 2, quantity: 3 }],
+          // cart: [
+          //   { id: 1, quantity: 2 },
+          //   { id: 2, quantity: 3 },
+          // ],
         });
         done();
       });
