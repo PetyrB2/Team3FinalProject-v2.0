@@ -23,6 +23,11 @@ const Comment = mongoose.model(
         min: 1,
         max: 10,
       },
+      Topic: {
+        required: false,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Topic",
+      },
     },
     {
       timestamps: true,
