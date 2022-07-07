@@ -5,11 +5,11 @@ const Reply = mongoose.model(
   new mongoose.Schema({
     Username: {
       type: String,
-      required: false,
+      required: true,
     },
     Message: {
       type: String,
-      required: false,
+      required: true,
     },
     Comment: {
       required: false,
