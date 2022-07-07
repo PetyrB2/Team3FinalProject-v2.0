@@ -1,14 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../Header/HeaderComponents/Logo";
+import background from "../../../assets/images/wavey-blue.png";
 
 const footerCopyright = () => {
   return (
     <footer className="text-center text-lg-start bg-dark text-muted">
       {/* SOCIAL MEDIA SECTION BEGINS */}
-      <section className=" bg-info d-flex justify-content-center justify-content-lg-between p-1 border-bottom">
+      <section
+        className="d-flex justify-content-center justify-content-lg-between p-1 border-bottom"
+        style={{ backgroundImage: `url(${background})` }}
+      >
         {/* LEFT  */}
-        <div className="me-5 d-none d-sm-block">
+        <div className="me-5 d-none d-sm-block text-white text-center">
           <span>Get connected with us on social networks:</span>
         </div>
 
@@ -107,22 +111,22 @@ const footerCopyright = () => {
               Our Films
             </h6>
             <p>
-              <Link to="/Home">Home</Link>
+              <Link to="/Home">QA Cinemas</Link>
             </p>
             <p>
-              <Link to="/Bookings">Book NOW</Link>
+              <Link to="/Bookings">Book NOW!</Link>
             </p>
             <p>
-              <Link to="/Searchbar">Search</Link>
+              <Link to="/Searchbar">Search...</Link>
             </p>
             <p>
               <Link to="/NewListings">New Films</Link>
             </p>
             <p>
-              <Link to="/Listings">Listings</Link>
+              <Link to="/Listings">Film Listings</Link>
             </p>
             <p>
-              <Link to="/Screens">Screens</Link>
+              <Link to="/Screens">Our Screens</Link>
             </p>
           </div>
 
@@ -158,6 +162,9 @@ const footerCopyright = () => {
             </p>
             <p>
               <Link to="/About">About Us</Link>
+            </p>
+            <p className="Mdnight text-white">
+              <Link to="/Listings2">Midnight Listings (18)</Link>
             </p>
 
             <div>
