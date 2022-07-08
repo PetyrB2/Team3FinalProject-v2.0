@@ -50,14 +50,21 @@ function Listings() {
               <img src={data.Poster} alt="The poster"></img>
             </button>
           </Link>
-          <div className="card-text">{data.Genre}</div>
-
-          <h6>{data.Plot}</h6>
-
-          <h4>Director: {data.Director}</h4>
+          <br />
           <Link to="/Bookings">
             <button className="btn btn-outline-secondary">Book Now</button>
           </Link>
+          <br />
+          <div className="lead">{data.Genre}</div>
+          <hr />
+          <h6>
+            <strong> {data.Title} </strong>
+            {data.Plot}
+          </h6>
+          <hr />
+          <h6>Directed by</h6>
+
+          <h4>{data.Director}</h4>
         </div>
 
         {/* Film B */}
@@ -70,12 +77,19 @@ function Listings() {
               <img src={dataB.Poster} alt="The poster" />
             </button>
           </Link>
-          <h6>{dataB.Genre}</h6>
-          <h6>{dataB.Plot}</h6>
-          <h4>Director: {dataB.Director}</h4>
+          <br />
           <Link to="/Bookings">
             <button className="btn btn-outline-secondary">Book Now</button>
           </Link>
+          <br />
+          <div className="lead">{dataB.Genre}</div>
+          <hr />
+          <h6>
+            <strong> {dataB.Title} </strong> - {dataB.Plot}
+          </h6>
+          <hr />
+          <h6>Directed by</h6>
+          <h4>{dataB.Director}</h4>
         </div>
 
         {/* Film C */}
@@ -88,13 +102,19 @@ function Listings() {
               <img src={dataC.Poster} alt="The poster"></img>
             </button>
           </Link>
-          <h6>{dataC.Genre}</h6>
-          <h6>{dataC.Plot}</h6>
-
-          <h4>Director: {dataC.Director}</h4>
+          <br />
           <Link to="/Bookings">
             <button className="btn btn-outline-secondary">Book Now</button>
           </Link>
+          <br />
+          <h6>{dataC.Genre}</h6>
+          <hr />
+          <h6>{dataC.Plot}</h6>
+          <hr />
+
+          <h6>Directed by</h6>
+
+          <h4>{dataC.Director}</h4>
         </div>
 
         {/* Film D */}
@@ -113,10 +133,14 @@ function Listings() {
           </Link>
           <br />
           <h6>{dataD.Genre}</h6>
-
+          <hr />
           <h6>{dataD.Plot}</h6>
-          <h6>Actors: {dataD.Actors}</h6>
-          <h4>Director: {dataD.Director}</h4>
+
+          <h7>Starring {dataD.Actors}</h7>
+          <hr />
+          <h6>Directed by</h6>
+
+          <h4>{dataD.Director}</h4>
         </div>
       </div>
     </div>
