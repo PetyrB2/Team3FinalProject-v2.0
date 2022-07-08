@@ -1,27 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import deluxe from "./../assets/images/deluxe.png";
+import NewListings from "./NewListings";
 
 const Home = () => {
   return (
-    <div className="text-center text-white">
+    <div
+      className="text-center text-white"
+      style={{
+        backgroundImage: `url(${deluxe})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <h1>Welcome to QA CINEMAS !</h1>
-
-      <h3>
-        <Link to="/Bookings">Buy YOUR tickets NOW !</Link>
-      </h3>
-
-      <h2>
-        <Link to="/NewListings">Latest Movies(image)</Link>
-      </h2>
-
-      <h2>
-        <Link to="/Screens">Our New Deluxe Screen!(image)</Link>
-      </h2>
-      <img
-        src={require("../assets/images/deluxe.png")}
-        alt="seats"
-        width="40%"
-      />
+      <hr />
+      <NewListings />
+      <hr />
+      <Link to="/Bookings">
+        <img
+          src={require("../assets/images/book-now-removebg.png")}
+          alt="booknow"
+          width="20%"
+        />
+      </Link>
 
       <h2>Family & Members Deals (coming soon)</h2>
     </div>
