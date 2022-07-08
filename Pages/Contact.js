@@ -1,6 +1,5 @@
 import React from "react";
-// import '../assets/css/bootstrap.min.css';
-import bootstrap from "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
 const Contact = () => {
   return (
     <div>
@@ -35,14 +34,6 @@ const Contact = () => {
                 className="btn btn-warning btn-lg px-4 me-md-2"
               >
                 Buy Tickets
-              </button>
-            </a>
-            <a href="/Bookings">
-              <button
-                type="button"
-                className="btn btn-info bg-light btn-lg px-4 me-md-2"
-              >
-                More Tickets
               </button>
             </a>
             <a href="/Location">
