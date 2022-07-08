@@ -1,60 +1,97 @@
 import React from "react";
-import "../assets/css/newListings.css";
+import OwlCarousel from "react-owl-carousel";
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
-const NewListings = () => {
+function NewListings() {
+  const movie = "Minions the rise of Gru";
+
+  const [data, setData] = useState("");
+
+  const movieB = "Lightyear";
+
+  const [dataB, setDataB] = useState("");
+
+  const movieC = "Black Phone";
+
+  const [dataC, setDataC] = useState("");
+
+  const movieD = "Thor";
+
+  const [dataD, setDataD] = useState("");
+
+  const movieE = "avatar the way of water";
+
+  const [dataE, setDataE] = useState("");
+
+  const movieF = "qw";
+
+  const [dataF, setDataF] = useState("");
+
+  const movieG = "Elvis";
+
+  const [dataG, setDataG] = useState("");
+
+  const fetchMovie = async (movieName, setInfo) => {
+    const { data } = await axios.get(
+      "http://www.omdbapi.com/?i=tt3896198&apikey=682f64da&t=" + movieName
+    );
+
+    setInfo(data);
+  };
+
+  useEffect(() => {
+    fetchMovie(movie, setData);
+
+    fetchMovie(movieB, setDataB);
+
+    fetchMovie(movieC, setDataC);
+
+    fetchMovie(movieD, setDataD);
+
+    fetchMovie(movieE, setDataE);
+
+    fetchMovie(movieF, setDataF);
+
+    fetchMovie(movieG, setDataG);
+  }, []);
+
+  // const options = {
+  //   items: 4,
+  // };
+
   return (
-    <div className="album py-5 bg-light">
-      <div className="container">
-        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-          <div className="col">
-            <div className="card shadow-sm">
-              <svg
-                className="bd-placeholder-img card-img-top"
-                width="100%"
-                height="225"
-                xmlns="http://www.w3.org/2000/svg"
-                role="img"
-                aria-label="Placeholder: Thumbnail"
-                preserveAspectRatio="xMidYMid slice"
-                focusable="false"
-              >
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#55595c" />
-                <text x="50%" y="50%" fill="#eceeef" dy=".3em">
-                  Thumbnail
-                </text>
-              </svg>
-
-              <div className="card-body">
-                <p className="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-                <div className="d-flex justify-content-between align-items-center">
-                  <div className="btn-group">
-                    <button
-                      type="button"
-                      className="btn btn-sm btn-outline-secondary"
-                    >
-                      View
-                    </button>
-                    <button
-                      type="button"
-                      className="btn btn-sm btn-outline-secondary"
-                    >
-                      Edit
-                    </button>
-                  </div>
-                  <small className="text-muted">9 mins</small>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div className="container ">
+      <OwlCarousel className="owl-theme" loop margin={10} nav autoplay>
+        <div className="item">
+          <img src={data.Poster} alt="The poster"></img>
         </div>
-      </div>
+        <div className="item">
+          <Link to="/Lightyear">
+            <img src={dataB.Poster} alt="Lightyear"></img>
+          </Link>
+        </div>
+        <div className="item">
+          <img src={dataC.Poster} alt="The poster"></img>
+        </div>
+        <div className="item">
+          <img src={dataD.Poster} alt="The poster"></img>
+        </div>
+        <div className="item">
+          <img src={dataE.Poster} alt="The poster"></img>
+        </div>
+        <div className="item">
+          <img src={dataF.Poster} alt="The poster"></img>
+        </div>
+        <div className="item">
+          <img src={dataG.Poster} alt="The poster"></img>
+        </div>
+      </OwlCarousel>
     </div>
   );
-};
+}
 
 export default NewListings;
