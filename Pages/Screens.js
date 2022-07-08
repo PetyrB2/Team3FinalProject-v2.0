@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Logo from "../Components/Header/HeaderComponents/Logo";
 
 const Screens = () => {
   return (
     <div>
       <div>
         <div className="container col-xxl-8 px-4 py-5">
-          <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
+          <div className="row flex-lg-row-reverse align-items-center text-white g-5 py-5">
             <div className="col-10 col-sm-8 col-lg-6">
               <img
                 src={require("../assets/images/seating.png")}
@@ -17,15 +18,17 @@ const Screens = () => {
 
             <div className="col-lg-6">
               <h1 className="display-5 fw-bold lh-1 mb-3">
-                <div className="lead fw-bold">QA Logo</div>
+                <div className="lead fw-bold">
+                  <Logo />
+                </div>
               </h1>
               <hr />
               <p className="lead">
-                <div className="lead text-uppercase ">
-                  <h2>Screen ONE</h2>
+                <div className="lead ">
+                  <h2>Screen One</h2>
                 </div>
                 <hr />
-                <div className="small text-muted mb-2">
+                <div className="small mb-2 text-white">
                   <h5>Our First and Original Screen</h5>
                   <h5>Comfortable</h5>
                   <h5>Affordable</h5>
@@ -37,10 +40,11 @@ const Screens = () => {
                       <img
                         src={require("../assets/images/auditorium.jpg")}
                         alt="VIP-seats"
-                        width="80%"
+                        width="60%"
                       />
                     </center>
                   </div>
+                  <hr />
                   <div className="d-grid gap-2 d-md-flex justify-content-center mb-4 mb-lg-3">
                     <center>
                       <a href="/awibble" rel="noreferrer" target="_blank">
@@ -76,17 +80,24 @@ const Screens = () => {
             </div>
 
             <div className="col-lg-6">
-              <h1 className="display-5 fw-bold lh-1 mb-3">
-                <div className="lead fw-bold">LOGO</div>
-              </h1>
+              <div className="lead fw-bold">
+                <center>
+                  <img
+                    src={require("../assets/images/QALogo-No_bg.png")}
+                    alt="VIP-seats"
+                    width="60%"
+                  />
+                </center>
+              </div>
+
               <hr />
 
               <p className="lead">
-                <div className="lead text-uppercase ">
+                <div className="lead text-white">
                   <h2>Deluxe Screen</h2>
                 </div>
                 <hr />
-                <div className="small text-muted mb-2">
+                <div className="small text-white mb-2">
                   <h5>Luxury away from Home</h5>
                   <h5>Deluxe Screen,</h5>
                   <h5>Luxuriuous</h5>
