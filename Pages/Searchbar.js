@@ -23,7 +23,7 @@ function App() {
               <img
                 src={data.Poster}
                 className="d-block mx-lg-auto img-fluid"
-                alt="Film Poster will Appear Here"
+                alt=""
                 width="400"
                 height="300"
                 loading="lazy"
@@ -53,7 +53,7 @@ function App() {
                   <hr />
                 </div>
                 <div className="small mb-2">
-                  <h6>Duration:{data.Runtime}</h6>
+                  <h6>Duration: {data.Runtime} </h6>
                 </div>
 
                 <div className="small mb-2">
