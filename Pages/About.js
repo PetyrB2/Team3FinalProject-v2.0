@@ -1,95 +1,145 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import bootstrap from "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 const About = () => {
   return (
-    <div className="row">
+    <div className="row  text-white">
       <p id="Listings" />
-      {/* Ladislav */}
-      <div className="col-lg-4 col-md-12 mb-4 mb-lg-0 border shadow gt-2 text-center card w-25">
-        <h2>ladislav</h2>
+      {/* Ladislav Mudry*/}
+      <div className="col-lg-4 col-md-12 mb-4 mb-lg-0 bg-dark border shadow gt-2 text-center card w-25">
+        <h2>Ladislav Mudry</h2>
+        <hr />
         <h5>Responsibilty: FrontEnd, Risk Analysis, Documentation</h5>
-
-        <h6>Write here...</h6>
-        <Link to="/Bookings">
-          <button className="btn btn-outline-secondary">Donate Here</button>
-        </Link>
-        <div className="card-text">card text</div>
-
-        <h6>
-          Skills: Javascript, Java, Node.js, React.js, HTML, CSSCyber Security,
-          Multi-Lingual{" "}
-        </h6>
-
-        <h4>Something2: </h4>
-        <Link to="/Bookings">
-          <button className="btn btn-outline-secondary">another link</button>
-        </Link>
-      </div>
-
-      {/* Peter */}
-      <div className="col-lg-4 col-md-12 mb-4 mb-lg-0 border shadow gt-2 text-center card w-25 card-title">
-        <h2>Peter Broadbent</h2>
-
-        <h5>Responsibilty: FrontEnd</h5>
         <h5>Software Specialist</h5>
 
-        <Link to="/Bookings">
-          <button className="btn btn-outline-secondary">Pic of Me</button>
-        </Link>
-        <h6>A background in IT. Love technology. Live to eat code.</h6>
-        <h6>
-          Skills: Javascript, Java, HTML, CSS, Node.js, React.js, IT background,
-          Multi-Lingual{" "}
-        </h6>
-        <h4>Responsibilty: Front-End </h4>
-        <Link to="/Bookings">
-          <button className="btn btn-outline-secondary">Button</button>
-        </Link>
-      </div>
-
-      {/* Saad */}
-      <div className="col-lg-4 col-md-12 mb-4 mb-lg-0 border shadow gt-2 text-center card w-25">
-        <h2>Saad Ahmed </h2>
-        <h5>Released: releasaes</h5>
-
-        <Link to="/Bookings">
-          <button className="btn btn-outline-secondary">IMAGE</button>
-        </Link>
-        <h6>genre</h6>
-
-        <h6>
-          Skills: Javascript, Java, HTML, CSS, Node.js, React.js, IT background,
-          Multi-Lingual{" "}
-        </h6>
-
-        <h4>Director: His Mum</h4>
-        <Link to="/Bookings">
-          <button className="btn btn-outline-secondary">Button</button>
-        </Link>
-      </div>
-
-      {/* Jordan */}
-      <div className="col-lg-4 col-md-12 mb-4 mb-lg-0 border shadow gt-2 text-center card w-25">
-        <h2>Jordan</h2>
-        <h5>Released: Jun Lee</h5>
-
-        <Link to="/Bookings">
+        <a href="https://github.com/lmudry">
           <button className="btn btn-outline-secondary">
-            Image here maybe
+            <img
+              src={require("../assets/images/film.webp")}
+              alt="Ladislav"
+              height="250"
+            />
           </button>
-        </Link>
-        <h6>Genre</h6>
+        </a>
 
-        <h6>plot</h6>
-        <h6>
+        <h6>A great asset to the team</h6>
+
+        <h6>Risk Analysis and FrontEnd prodder</h6>
+        <h4>
           Skills: Javascript, Java, HTML, CSS, Node.js, React.js, IT background,
           Multi-Lingual{" "}
-        </h6>
-        <h4>Director: asdasdasdasd</h4>
-        <Link to="/Bookings">
-          <button className="btn btn-outline-secondary">Button</button>
-        </Link>
+        </h4>
+        <h6>Few words: "At the moment - My github is not working!"</h6>
+        <a href="https://github.com/lmudry" rel="noreferrer" target="_blank">
+          <button className="btn btn-outline-secondary">My Github</button>
+        </a>
+      </div>
+
+      {/* Peter Broadbent */}
+      <div className="col-lg-4 col-md-12 mb-4 mb-lg-0 border bg-dark shadow gt-2 text-center card w-25 card-title">
+        <h2>Peter Broadbent</h2>
+        <hr />
+        <h5>Responsibilty: FrontEnd</h5>
+        <h5>Software Specialist</h5>
+        <div className="w-20">
+          <a
+            href="https://githuvb.com/PetyrB2"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <button className="btn btn-outline-secondary">
+              <img
+                src={require("../assets/images/glasses.jfif")}
+                alt="Peter B"
+              />
+            </button>
+          </a>
+        </div>
+        <h6>A great asset to the team</h6>
+
+        <h6>Frontend poker</h6>
+        <h4>
+          Skills: Javascript, Java, HTML, CSS, Node.js, React.js, IT background,
+          Multi-Lingual{" "}
+        </h4>
+        <h6>Few words: "Aha.. coffee...."</h6>
+        <a href="/https://github.com/PetyrB2" rel="noreferrer" target="_blank">
+          <button className="btn btn-outline-secondary">My Github</button>
+        </a>
+      </div>
+
+      {/* Saad Ahmed*/}
+      <div className="col-lg-4 col-md-12 mb-4 mb-lg-0 border bg-dark shadow gt-2 text-center card w-25">
+        <h2>Saad Ahmed </h2>
+        <hr />
+        <h5>Responsibilty: Backend, FrontEnd, Testing</h5>
+        <h5>Software Specialist</h5>
+
+        <a
+          href="https://www.instagram.com/s.aadly/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <button className="btn btn-outline-secondary">
+            <img
+              src={require("../assets/images/saad.jpeg")}
+              alt="Saad Ahmed"
+              height="250"
+            />
+          </button>
+        </a>
+        <h6>A great asset to the team</h6>
+
+        <h6>Back End Code Smasher </h6>
+        <h4>
+          Skills: Javascript, Java, HTML, CSS, Node.js, React.js, IT background,
+          Multi-Lingual{" "}
+        </h4>
+        <h6>Few words: "We can come back to that one."</h6>
+        <a
+          href="https://www.instagram.com/s.aadly/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <button className="btn btn-outline-secondary">My Instagram</button>
+        </a>
+      </div>
+
+      {/* Jordan Lee */}
+      <div className="col-lg-4 col-md-12 mb-4 mb-lg-0 border bg-dark shadow gt-2 text-center card w-25">
+        <h2>Jordan Lee</h2>
+        <hr />
+        <h5>Responsibilty: Backend, Frontend, Documentation, GitHub</h5>
+        <h5>Software Specialist</h5>
+
+        <a
+          href="https://github.com/DundasBoots"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <button className="btn btn-outline-secondary">
+            <img
+              src={require("../assets/images/Jordan.png")}
+              alt="Jordan Lee"
+              height="250"
+            />
+          </button>
+        </a>
+        <h6>A great asset to the team</h6>
+
+        <h6>Scrum Master extraodinaire</h6>
+        <h4>
+          Skills: Javascript, Java, HTML, CSS, Node.js, React.js, IT background,
+          Multi-Lingual{" "}
+        </h4>
+        <h6>Few words: "Hi...."</h6>
+        <a
+          href="https://github.com/DundasBoots"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <button className="btn btn-outline-secondary">My Github</button>
+        </a>
       </div>
     </div>
   );
