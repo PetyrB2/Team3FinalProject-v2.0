@@ -36,7 +36,6 @@ const HeaderNav = () => {
             </Link>
           </ul>
         </nav>
-        <div className="text-left lead fw-bold">QA CINEMAS</div>
       </header>
     </div>
   );
