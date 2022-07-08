@@ -1,7 +1,5 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
-
 const Location = () => {
   return (
     <div>
@@ -14,7 +12,7 @@ const Location = () => {
                 title="gmap"
                 width="600"
                 height="450"
-                loading="lazy"
+                loading="eager"
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
@@ -25,8 +23,8 @@ const Location = () => {
                   alt="QALogo"
                 />
               </div>
+
               <hr />
-              {/* <p className="lead"> */}
               <div className="small text-white mb-2">
                 <h5> International House</h5>
                 <h5>1 St. Katherine's Way</h5>
@@ -40,11 +38,6 @@ const Location = () => {
                       href="https://www.google.com/maps/dir//3rd+Floor,+QA+Ltd.,+International+House,+1+St+Katharine's+Way,+London+E1W+1UN/@51.507023,-0.0754622,16.75z/data=!3m1!5s0x487603555f190937:0x5ddb3b1b364ab175!4m9!4m8!1m0!1m5!1m1!1s0x487603544462f21d:0x60c3dd1ddc3bc0b7!2m2!1d-0.0738037!2d51.5075167!3e3"
                       rel="noreferrer"
                       target="_blank"
-                    ></a>
-                    <a
-                      href="https://www.google.com/maps/dir//3rd+Floor,+QA+Ltd.,+International+House,+1+St+Katharine's+Way,+London+E1W+1UN/@51.507023,-0.0754622,16.75z/data=!3m1!5s0x487603555f190937:0x5ddb3b1b364ab175!4m9!4m8!1m0!1m5!1m1!1s0x487603544462f21d:0x60c3dd1ddc3bc0b7!2m2!1d-0.0738037!2d51.5075167!3e3"
-                      rel="noreferrer"
-                      target="_blank"
                     >
                       <button
                         type="button"
@@ -53,14 +46,6 @@ const Location = () => {
                         Get Directions
                       </button>
                     </a>
-                    <Link to="/">
-                      <button
-                        type="button"
-                        className="btn btn-info btn-lg px-4 me-md-2"
-                      >
-                        Homepage
-                      </button>
-                    </Link>
                   </center>
                 </div>
               </div>
