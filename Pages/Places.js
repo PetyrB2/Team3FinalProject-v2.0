@@ -1,11 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const Places = () => {
   return (
     <div>
       <div>
-        <div className="container col-xxl-8 px-4 py-5">
+        <div className="container col-xxl-8 px-4 py-5 ">
           <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
             <div className="col-10 col-sm-8 col-lg-6">
               <iframe
@@ -13,22 +12,19 @@ const Places = () => {
                 width="400"
                 height="300"
                 title="Slug"
-                loading="lazy"
+                loading="auto"
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
 
             <div className="col-lg-6">
-              <h1 className="display-5 fw-bold lh-1 mb-3">
-                <div className="lead fw-bold">LOGO</div>
-              </h1>
               <hr />
               <div className="lead">
-                <div className="lead text-uppercase ">
+                <div className="lead text-uppercase text-white">
                   <h2>Slug & Lettuce</h2>
                 </div>
                 <hr />
-                <div className="small text-muted mb-2">
+                <div className="small  mb-2 text-white">
                   <h5>1 St. Katherine's Way</h5>
                   <h5>London,</h5>
                   <h5> UK</h5>
@@ -57,14 +53,6 @@ const Places = () => {
                           Get Directions
                         </button>
                       </a>
-                      <Link to="/">
-                        <button
-                          type="button"
-                          className="btn btn-info btn-lg px-4 me-md-2"
-                        >
-                          Homepage
-                        </button>
-                      </Link>
                     </center>
                   </div>
                 </div>
@@ -79,22 +67,19 @@ const Places = () => {
                 width="400"
                 height="300"
                 title="Slug"
-                loading="lazy"
+                loading="auto"
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
 
             <div className="col-lg-6">
-              <h1 className="display-5 fw-bold lh-1 mb-3">
-                <div className="lead fw-bold">LOGO</div>
-              </h1>
               <hr />
               <div className="lead">
-                <div className="lead text-uppercase ">
+                <div className="lead text-uppercase text-white">
                   <h2>Ping Pong</h2>
                 </div>
                 <hr />
-                <div className="small text-muted mb-2">
+                <div className="small text-white mb-2">
                   <h5>3 St. Katherine's Way</h5>
                   <h5>London,</h5>
                   <h5> UK</h5>
@@ -125,14 +110,6 @@ const Places = () => {
                           Get Directions
                         </button>
                       </a>
-                      <Link to="/">
-                        <button
-                          type="button"
-                          className="btn btn-info btn-lg px-4 me-md-2"
-                        >
-                          Homepage
-                        </button>
-                      </Link>
                     </center>
                   </div>
                 </div>
