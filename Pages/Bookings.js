@@ -211,9 +211,7 @@ function Bookings() {
 
   return (
     <div className="container text white">
-      <center>
-        <h1>Booking Form</h1>
-      </center>
+      <div className="lead text-center text white">Booking Form</div>
 
       <div className="row">
         <div className="col-md-6 offset-md-3 border p-4 shadow bg-light">
