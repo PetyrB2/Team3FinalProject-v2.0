@@ -28,6 +28,11 @@ Front-end: Axios, Bootstrap, Concurrently, Express, React-dom, react-owl-carouse
 Back-end: Chai, Mongoose, Nodemon, Stripe, cors, chai-http
 ### Installing
 Copy the repository from GitHub and run npm i to install dependencies in package.son and back-end’s package.json…
+
+You can do this by going to the Team3FinalProject main dirextory and run 
+npm i
+Also go to the src/backend dir and run the same command.
+npm i 
 ### Running
 In terminal windows  type npm start…
 ### Testing
